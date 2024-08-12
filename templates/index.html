@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отметка посещаемости</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+</head>
+<body>
+
+   <div class="container">
+    <h1>Отметка посещаемости</h1>
+
+    <div class="form-container">
+        <label for="selectList">Выберите группу:</label>
+        <select id="selectList" onchange="showNames()">
+             <option value="all">Все</option>
+            {% if context.week  % 2 == 0 %}
+
+
+            <option value="I2">I2</option>
+            <option value="F4">F4</option>
+            <option value="F2">F2</option>
+            <option value="X1">X1</option>
+            <option value="B2">B2</option>
+            <option value="F6">F6</option>
+            <option value="F1">F1</option>
+            {% else %}
+                  <option value="M1">Вышмат</option>
+                  <option value="M">Математика</option>
+            {% endif %}
+        </select>
+
+
+        <form id="attendanceForm" onsubmit="submitAttendance(event)">
+            <div id="namesContainer"></div>
+
+            <button type="submit">Отправить</button>
+        </form>
+           <button onclick="copy()">Отчет</button>
+    </div>
+</div>
+    <script src="{{ url_for('static', filename= 'js/script.js') }}"></script>
+</body>
+</html>
