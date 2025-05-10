@@ -8,7 +8,6 @@ app = Flask(__name__)
 conn = sqlite3.connect('attendance1.db', check_same_thread=False)
 cur = conn.cursor()
 
-# Создание таблицы в базе данных, если она еще не создана
 cur.execute('''CREATE TABLE IF NOT EXISTS students
                 (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, attended INTEGER)''')
 conn.commit()
