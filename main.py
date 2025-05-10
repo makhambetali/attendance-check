@@ -35,7 +35,6 @@ def update_attendance():
     print(data, selected_names)
     for name in selected_names:
         attended = 1 if name.get('checked', False) else 0  # Если имя отмечено, то attended = 1, иначе attended = 0
-        # Обновляем статус посещаемости в базе данных
         cur.execute('''UPDATE students SET attended = ? WHERE name = ?''', (attended, name['name']))
         conn.commit()
     return jsonify({'message': 'Attendance updated successfully'})
